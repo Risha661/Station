@@ -50,11 +50,23 @@ export class Station {
   fillingGo(column) {
     const car = column.car;
     const start = column.car.needPetrol;
-    console.log(`Заправляем ${JSON.stringify(column.car)}`);
+    const timerId = setInterval(() => {
+      car.nowTank += column.speed;
+      if (car.nowTank >= car.maxTank) {
+        clearInterval(timerId);
+        const total = car.nowTank - start;
+        column.car = null;
+        this.leaveClient({car, total});
+      }
+    }, 1000);
+  }
+
+  leaveClient({car, total}) {
+    this.#ready.push(car);
+    console.log(car.getTitle(), total);
   }
 
   addCarQueue(car) {
     this.#queue.push(car);
   }
-
 }

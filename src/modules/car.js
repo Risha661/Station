@@ -7,13 +7,28 @@ export class Car {
     this.nowTank = Math.floor(Math.random() * maxTank);
   }
 
-  needPetrol() {
+  getTitle() {
+    return `${this.brand} ${this.model}`;
+  }
+
+  setModel(model) {
+    this.model = model;
+    return this;
+  }
+
+  get needPetrol() {
     return this.#maxTank - this.nowTank;
   }
 
   fillUp() {
     this.nowTank = this.#maxTank;
   }
+
+  get maxTank() {
+    return this.#maxTank;
+  }
+
+  static string = 'Новый автомобиль';
 }
 
 export class PassangerCar extends Car {
