@@ -132,3 +132,7 @@ h1 {
 .car {
   display: none;
 }
+
+.gas {
+  list-style-image: url(assets/img/gas-station.svg);
+}

@@ -45,6 +45,11 @@ const station = new Station([
     count: 2,
     speed: 20,
   },
+  {
+    type: 'gaz',
+    count: 1,
+    speed: 10,
+  },
 ], '.app');
 
 
