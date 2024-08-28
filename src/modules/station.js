@@ -9,7 +9,7 @@ export class Station {
   constructor(typeStation, renderApp = null) {
     this.typeStation = typeStation;
     this.renderApp = renderApp;
-    this.RenderStation = null;
+    this.renderStation = null;
   }
 
   get filling() {
@@ -49,12 +49,14 @@ export class Station {
 
   fillingGo(column) {
     const car = column.car;
-    const start = column.car.needPetrol;
+    const needPetrol = car.needPetrol;
+    let nowTank = car.nowTank;
     const timerId = setInterval(() => {
-      car.nowTank += column.speed;
-      if (car.nowTank >= car.maxTank) {
+      nowTank += column.speed;
+      if (nowTank >= car.maxTank) {
         clearInterval(timerId);
-        const total = car.nowTank - start;
+        const total = nowTank - needPetrol;
+        car.fillUp();
         column.car = null;
         this.leaveClient({car, total});
       }
@@ -63,7 +65,6 @@ export class Station {
 
   leaveClient({car, total}) {
     this.#ready.push(car);
-    console.log(car.getTitle(), total);
   }
 
   addCarQueue(car) {
