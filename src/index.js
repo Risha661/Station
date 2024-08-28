@@ -37,7 +37,7 @@ const getTestCar = () => {
 const station = new Station([
   {
     type: 'petrol',
-    count: 2,
+    count: 3,
     speed: 5,
   },
   {

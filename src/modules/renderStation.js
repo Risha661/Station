@@ -57,6 +57,7 @@ export class RenderStation {
         itemCar.classList.add(car.typeCar);
         itemColumn.append(itemCar);
       }
+      columns.append(itemColumn);
     });
     return columns;
   }
