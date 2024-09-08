@@ -1,4 +1,4 @@
-import { Column } from './column';
+import {Column} from './column';
 import {RenderStation} from './renderStation';
 
 export class Station {
@@ -21,12 +21,7 @@ export class Station {
   }
 
   init() {
-    for(const optionStation of this.typeStation) {
-      for (let i = 0; i < optionStation.count; i++) {
-        this.#filling.push(new Column(optionStation.type, optionStation.speed));
-      }
-    }
-
+    this.addStation();
     if (this.renderApp) {
       this.renderStation = new RenderStation(this.renderApp, this);
     }
@@ -35,7 +30,26 @@ export class Station {
       this.checkQueueToFilling();
     }, 2000);
   }
-
+  addStation() {
+    for (const optionStation of this.typeStation) {
+      if (optionStation.count) {
+        for (let i = 0; i < optionStation.count; i++) {
+          this.#filling.push(new Column(optionStation.type,
+            optionStation.speed));
+        }
+      } else {
+        if (optionStation.speed) {
+          this.#filling.push(new Column(optionStation.type,
+            optionStation.speed));
+        } else {
+          optionStation.speed = 5;
+          this.#filling.push(new Column(optionStation.type,
+            optionStation.speed));
+        }
+      }
+      console.log(optionStation.speed);
+    }
+  }
   checkQueueToFilling() {
     if (this.#queue.length) {
       for (let i = 0; i < this.#queue.length; i++) {

@@ -35,6 +35,12 @@ ul {
   list-style-image: url(assets/img/icon-park-outline_petrol.svg);
 }
 
+.gaz {
+
+  list-style-image: url(assets/img/gas-station.png);
+  background-size: 48px;
+}
+
 .passanger {
   padding-left: 20px;
   background-image: url(assets/img/clarity_car-solid.svg);
@@ -45,6 +51,13 @@ ul {
 .Truck {
   padding-left: 20px;
   background-image: url(assets/img/bxs_truck.svg);
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+
+.gasMobil {
+  padding-left: 20px;
+  background-image: url(assets/img/75880.png);
   background-repeat: no-repeat;
   background-size: 20px;
 }
@@ -133,6 +146,3 @@ h1 {
   display: none;
 }
 
-.gas {
-  list-style-image: url(assets/img/gas-station.svg);
-}

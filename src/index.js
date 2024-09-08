@@ -1,5 +1,5 @@
 import './style.css';
-import {Truck, PassangerCar} from './modules/car';
+import {Truck, PassangerCar, Gas} from './modules/car';
 import {Station} from './modules/station';
 
 const open = document.querySelector('.open');
@@ -25,30 +25,38 @@ const testArray = {
     ['Volvo', 'FM', 700],
     ['Volvo', 'FMX', 540],
   ],
+  gasMobil: [
+    ['tesla', 'cybertrack', 100],
+    ['tesla', 'model3', 200],
+    ['tesla', 'modelX', 300],
+  ],
 };
 
 const getTestCar = () => {
-  const typeBool = Math.random() < 0.6;
-  const listCar = typeBool ? testArray.passangerCar : testArray.truck;
+  const typeBool = Math.floor(Math.random() * 3);
+  if (typeBool === 0) {
+    const listCar = testArray.passangerCar;
+    const randomCar = listCar[(Math.floor(Math.random() * listCar.length))];
+    return (new PassangerCar(...randomCar));
+  } else if (typeBool === 1) {
+    const listCar = testArray.truck;
+    const randomCar = listCar[(Math.floor(Math.random() * listCar.length))];
+    return (new Truck(...randomCar));
+  }
+  const listCar = testArray.gasMobil;
   const randomCar = listCar[(Math.floor(Math.random() * listCar.length))];
-  return typeBool ? new PassangerCar(...randomCar) : new Truck(...randomCar);
+  return (new Gas(...randomCar));
 };
 
 const station = new Station([
   {
     type: 'petrol',
-    count: 3,
-    speed: 5,
   },
   {
     type: 'diesel',
-    count: 2,
-    speed: 20,
   },
   {
     type: 'gaz',
-    count: 1,
-    speed: 10,
   },
 ], '.app');
 

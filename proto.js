@@ -35,15 +35,6 @@ const Truck = function(brand, model, maxTank, typeFuel = 'diesel') {
 
 Object.setPrototypeOf(Truck.prototype, Car.prototype);
 
-
-const GazCar = function(brand, model, maxTank, typeFuel = 'gaz') {
-  Car.call(this, brand, model, maxTank);
-  this.typeFuel = typeFuel;
-  this.typeCar = 'gaz';
-};
-
-Object.setPrototypeOf(GazCar.prototype, Car.prototype);
-
 const bmw = new PassangerCar('BMW', 'X7', 80, 'diesel');
 const mazda = new PassangerCar('Mazda', 'cx-5', 55);
 
